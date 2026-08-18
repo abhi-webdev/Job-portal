@@ -2,6 +2,12 @@ import mongoose from 'mongoose';
 
 const resumeSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: false,
+    },
+
     fileName: {
       type: String,
       required: true,
@@ -22,9 +28,11 @@ const resumeSchema = new mongoose.Schema(
       default: [],
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
 
-const resume = mongoose.model("Resume", resumeSchema)
+const Resume = mongoose.model('Resume', resumeSchema);
 
-export default resume
+export default Resume;
